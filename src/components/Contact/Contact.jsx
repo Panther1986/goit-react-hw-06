@@ -17,7 +17,7 @@ const Contact = ({ contact }) => {
           <IoPerson /> {contact.name}
         </p>
         <p className={css.contacNumber}>
-          <FaPhoneAlt /> {contact.phoneNumber}
+          <FaPhoneAlt /> {contact.number}
         </p>
       </div>
       <button className={css.btn} onClick={handleDelete}>
