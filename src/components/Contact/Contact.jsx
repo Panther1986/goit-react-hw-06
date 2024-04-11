@@ -1,19 +1,26 @@
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
 import css from "./Contact.module.css";
 
-const Contact = ({ data: { id, name, number }, onDelete }) => {
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteContact(contact.id));
+  };
   return (
     <>
       <div className={css.contactMainConteiner}>
         <p className={css.contacText}>
-          <IoPerson /> {name}
+          <IoPerson /> {contact.name}
         </p>
         <p className={css.contacNumber}>
-          <FaPhoneAlt /> {number}
+          <FaPhoneAlt /> {contact.phoneNumber}
         </p>
       </div>
-      <button className={css.btn} onClick={() => onDelete(id)}>
+      <button className={css.btn} onClick={handleDelete}>
         Delete
       </button>
     </>
